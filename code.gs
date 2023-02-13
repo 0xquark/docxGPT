@@ -1,4 +1,3 @@
-// DROP DOWN MENU
 function onOpen() {
  DocumentApp.getUi().createMenu("docxGPT")
  .addItem("Generate code in cpp", "generatecode")
@@ -6,12 +5,10 @@ function onOpen() {
  .addItem("Explain the code", "explaincode")
   .addToUi();
 }
-// ****END MENU****
  
-// FIXED VARIABLES. Your API and Model Type
+// Your API and Model Type
 var apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 var model = "text-davinci-003"
-// ****END VARIABLES****
  
 function generatecode() {
 var doc = DocumentApp.getActiveDocument()
@@ -67,9 +64,7 @@ var responseText = response.getContentText();
 var json = JSON.parse(responseText);
 Logger.log(json['choices'][0]['text'])
 para = body.appendParagraph(json['choices'][0]['text'])
-}
-// ****END PROMPT****
- 
+} 
  
  
 function explaincode() {
@@ -99,4 +94,3 @@ var prompt2 = "Explain the following code : " + selectedText;
  var url1=json['data'][0]['url']
  body.appendImage(UrlFetchApp.fetch(url1).getBlob());
 }
-// ****END IMAGE****
